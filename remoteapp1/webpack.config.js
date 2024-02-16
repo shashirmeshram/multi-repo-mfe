@@ -45,13 +45,17 @@ module.exports = {
         filename: "remoteEntry.js",
         exposes: {
           "./homeModule": ".//src/app/home/home.module.ts",
+          "./web-components": "./src/bootstrap.ts",
         },
+      
+        
 
         shared: share({
           "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
           "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
           "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/router": { singleton: true, strictVersion: false, requiredVersion: 'auto' },
+          "shared-lib": { singleton: true, strictVersion: false, requiredVersion: 'auto' },
 
           ...sharedMappings.getDescriptors()
         })

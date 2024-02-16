@@ -53,7 +53,7 @@ module.exports = {
           "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/material": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          //"shared-lib": { singleton: true, import: "projects/shared-lib/src/lib/public-api.ts" },
+          "shared-lib": { singleton: true, strictVersion: false, requiredVersion: 'auto' },
 
           ...sharedMappings.getDescriptors()
         })

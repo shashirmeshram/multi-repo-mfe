@@ -9,4 +9,5 @@ export * from './lib/shared-lib.module';
 export * from './lib/products.service';
 export * from './lib/product';
 export * from './lib/basket.service';
+export * from './lib/data.service';
 

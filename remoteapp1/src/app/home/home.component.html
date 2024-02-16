@@ -1,5 +1,37 @@
-<p>App1 works!</p>
+<div class="container p-6">
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center">Your Cupcake Basket</h3>
+            <p *ngIf="totalItems === 0" class="text-center">
+                Oh no! Your cupcake basket is empty. Treat yourself to a cupcake!
+            </p>
+        </div>
+    </div>
+    <div class="row m-5">
+        <div class="col-5  offset-md-3">
+            <div class="text-center">
+                <div *ngIf="totalItems > 0">
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr class="table-primary">
+                                <th scope="col">Name</th>
+                                <th scope="col">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of items">
+                                <td>{{item.product.name}}</td>
+                                <td>{{item.quantity}}</td>
+                            </tr>
+                            <tr class="table-info">
+                                <td>Total number of items</td>
+                                <td> {{totalItems}}</td>
+                            </tr>
+                        </tbody>
 
-{{message}}
-
-
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

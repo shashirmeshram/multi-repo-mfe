@@ -2,12 +2,25 @@
     <div class="container-fluid">
         <div class="row">
             <div class="alert alert-primary" role="alert">
-                <a routerLink="/" class="">Shell/Host App</a> &nbsp;
-                <a class="btn btn-success" (click)="dispatchEventFromHostFn()">Send Data </a>
+                <a routerLink="/" class="btn btn-success">Shell/Host App</a> &nbsp;
+                <!-- <a class="btn btn-primary" (click)="dispatchEventFromHostFn()">Send Data </a> &nbsp; -->
+                <a class="btn btn-danger" [routerLink]="['protected']">Protected</a> &nbsp;
+                <a class="btn btn-info" (click)="gotoWebComponent()">Web Component</a>
+                <!-- <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item list-group-item-success"> <a routerLink="/">Shell/Host App</a></li>
+                    <li class="list-group-item"><a (click)="dispatchEventFromHostFn()" class="cursor-pointer">Send
+                            Data</a>
+                    </li>
+                    <li class="list-group-item list-group-item-info"><a [routerLink]="['protected']">Protected</a>
+                    </li>
+                    <li class="list-group-item list-group-item-dark"> <a routerLink="/dashboard">Dashboard</a></li>
+
+                </ul> -->
             </div>
         </div>
     </div>
 </header>
+
 <mat-sidenav-container class="example-container">
     <mat-sidenav mode="side" opened>
         <mat-list>
@@ -23,43 +36,8 @@
         <div class="container">
         </div>
     </mat-sidenav>
+
     <mat-sidenav-content>
-        <div class="container">
-            <div class="row">
-                <div class="container ">
-                    <div class="row gap-3">
-                        <div class="col-sm" *ngFor="let product of products">
-                            <div class="card">
-                                <img src="{{product.link}}" alt="{{product.name}}"
-                                    class="card-img-top img-thumbnail img-fluid">
-                                <div class="card-body">
-                                    <h5 class="card-title"> {{product.name}}</h5>
-                                    <p class="card-text"> {{product.description}}</p>
-                                    <a (click)="purchaseProduct()" class="btn btn-primary float-end">
-                                        <span *ngIf="!notifyPurchase; else notify">Add to basket</span>
-                                        <ng-template #notify>
-                                           
-                                            <div >
-                                                
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-plus-square-fill"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0" />
-                                                </svg>  
-                                            </div>
-                                        </ng-template>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-center">
-                    <lib-shared-lib></lib-shared-lib>
-                    <router-outlet></router-outlet>
-                </p>
-            </div>
-        </div>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

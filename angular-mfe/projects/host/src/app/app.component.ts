@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, ProductsService } from 'shared-lib';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,15 +7,10 @@ import { Product, ProductsService } from 'shared-lib';
 })
 export class AppComponent implements OnInit {
   title = 'host';
-  public products: Product[] = [];
-  constructor(
-    private productsService: ProductsService
-  ) {}
 
-  public ngOnInit(): void {
-    this.products = this.productsService.getProducts();
-    console.log('products-->', this.products);
-  }
+  constructor(private router: Router) {}
+
+  public ngOnInit(): void {}
 
   dispatchEventFromHostFn() {
     const customEvent = new CustomEvent('event', {
@@ -24,13 +19,9 @@ export class AppComponent implements OnInit {
 
     const event = new CustomEvent('event', { detail: 'hello from host' });
     dispatchEvent(event);
-
-    // PubSub.publish('test', this.data);
   }
-  public notifyPurchase = false;
-  public purchaseProduct(): void {
-    this.notifyPurchase = true;
-    //this.purchase.emit(this.product.id);
-    setTimeout(() => this.notifyPurchase = false, 3000);
+
+  gotoWebComponent() {
+    this.router.navigateByUrl('/web-component');
   }
 }
