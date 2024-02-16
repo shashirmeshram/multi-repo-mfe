@@ -1,0 +1,80 @@
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="alert alert-primary" role="alert">
+                <a routerLink="/" class="">Shell/Host App</a> &nbsp;
+                <a class="btn btn-success" (click)="dispatchEventFromHostFn()">Send Data </a>
+            </div>
+
+        </div>
+    </div>
+</header>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
+        <mat-list>
+            <mat-list-item>
+                <button mat-button color="primary" routerLink="/app1">App1</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <button mat-button color="primary" routerLink="/app2">App2</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+        <div class="container">
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="container">
+            <div class="row">
+                <div class="container ">
+                    <div class="row" >
+                        <div class="col-sm" *ngFor="let product of products">
+                            <img src="{{product.link}}" alt="{{product.name}}" class="img-thumbnail">
+                            <h2 class="text-center">
+                                {{product.name}}
+                            </h2>
+                            <p class="">
+                                {{product.description}}
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- <div class="flex h-56" *ngFor="let product of products">
+                    <div class="flex-none w-48 relative">
+                        <img src="{{product.link}}" alt="{{product.name}}"
+                            class="absolute inset-0 w-full h-full object-cover rounded-l-lg" />
+                    </div>
+                    <div class="p-6 border-y border-r border-sky-300 rounded-r-lg w-96 flex flex-col">
+                        <h2 class="text-3xl text-violet-600">
+                            {{product.name}}
+                        </h2>
+                        <p class="my-2 text-sm text-slate-600 flex-grow">
+                            {{product.description}}
+                        </p>
+                        <div class="text-sm font-medium self-end">
+                            <button
+                                class="transition ease-in-out delay-150 h-10 px-6 font-semibold rounded-lg border text-slate-700 font-sans duration-300 hover:-translate-y-1 hover:scale-110"
+                                (click)="purchaseProduct()">
+                                <span *ngIf="!notifyPurchase; else notify">Add to basket</span>
+                                <ng-template #notify>
+                                    <div class="flex items-center">
+                                        <span
+                                            class="material-icons-outlined text-emerald-600">check_circle_outline</span>
+                                        <span class="font-semibold text-l">&nbsp; Added!</span>
+                                    </div>
+                                </ng-template>
+                            </button>
+                        </div>
+                    </div>
+                </div> -->
+
+                <p class="text-center">
+                    <lib-shared-lib></lib-shared-lib>
+                    <router-outlet></router-outlet>
+                </p>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
