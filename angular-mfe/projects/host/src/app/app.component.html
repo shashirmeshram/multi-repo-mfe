@@ -5,7 +5,6 @@
                 <a routerLink="/" class="">Shell/Host App</a> &nbsp;
                 <a class="btn btn-success" (click)="dispatchEventFromHostFn()">Send Data </a>
             </div>
-
         </div>
     </div>
 </header>
@@ -28,48 +27,34 @@
         <div class="container">
             <div class="row">
                 <div class="container ">
-                    <div class="row" >
+                    <div class="row gap-3">
                         <div class="col-sm" *ngFor="let product of products">
-                            <img src="{{product.link}}" alt="{{product.name}}" class="img-thumbnail">
-                            <h2 class="text-center">
-                                {{product.name}}
-                            </h2>
-                            <p class="">
-                                {{product.description}}
-                            </p>
+                            <div class="card">
+                                <img src="{{product.link}}" alt="{{product.name}}"
+                                    class="card-img-top img-thumbnail img-fluid">
+                                <div class="card-body">
+                                    <h5 class="card-title"> {{product.name}}</h5>
+                                    <p class="card-text"> {{product.description}}</p>
+                                    <a (click)="purchaseProduct()" class="btn btn-primary float-end">
+                                        <span *ngIf="!notifyPurchase; else notify">Add to basket</span>
+                                        <ng-template #notify>
+                                           
+                                            <div >
+                                                
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-plus-square-fill"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0" />
+                                                </svg>  
+                                            </div>
+                                        </ng-template>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        
                     </div>
                 </div>
-                <!-- <div class="flex h-56" *ngFor="let product of products">
-                    <div class="flex-none w-48 relative">
-                        <img src="{{product.link}}" alt="{{product.name}}"
-                            class="absolute inset-0 w-full h-full object-cover rounded-l-lg" />
-                    </div>
-                    <div class="p-6 border-y border-r border-sky-300 rounded-r-lg w-96 flex flex-col">
-                        <h2 class="text-3xl text-violet-600">
-                            {{product.name}}
-                        </h2>
-                        <p class="my-2 text-sm text-slate-600 flex-grow">
-                            {{product.description}}
-                        </p>
-                        <div class="text-sm font-medium self-end">
-                            <button
-                                class="transition ease-in-out delay-150 h-10 px-6 font-semibold rounded-lg border text-slate-700 font-sans duration-300 hover:-translate-y-1 hover:scale-110"
-                                (click)="purchaseProduct()">
-                                <span *ngIf="!notifyPurchase; else notify">Add to basket</span>
-                                <ng-template #notify>
-                                    <div class="flex items-center">
-                                        <span
-                                            class="material-icons-outlined text-emerald-600">check_circle_outline</span>
-                                        <span class="font-semibold text-l">&nbsp; Added!</span>
-                                    </div>
-                                </ng-template>
-                            </button>
-                        </div>
-                    </div>
-                </div> -->
-
                 <p class="text-center">
                     <lib-shared-lib></lib-shared-lib>
                     <router-outlet></router-outlet>
